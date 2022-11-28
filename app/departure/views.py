@@ -11,7 +11,7 @@ from users.serializers import GetUserSerializer
 import pusher
 from decouple import config
 class DepartureView(viewsets.ModelViewSet):
-    permission_class = [permissions.AllowAny]
+    permission_classes = (permissions.AllowAny, )
     filter_backends = [filters.SearchFilter]
     search_fields = ['location']
     queryset=Departure.objects.all()

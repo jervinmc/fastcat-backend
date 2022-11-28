@@ -15,7 +15,7 @@ class BookingView(viewsets.ModelViewSet):
     filter_backends = [filters.SearchFilter]
     search_fields = ['location']
     queryset=Booking.objects.all()
-    permissions_class = [permissions.AllowAny]
+    permission_classes = (permissions.AllowAny, )
     serializer_class=BookingSerializer
 
 
