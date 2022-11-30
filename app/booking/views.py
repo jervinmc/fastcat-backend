@@ -57,7 +57,7 @@ class BuyPaymaya(generics.GenericAPIView):
                     "description": "dse"
                 }
             ],
-            "requestReferenceNumber": "123123"
+            "requestReferenceNumber": "1231412342312"
         }
         headers = {
             "Accept": "application/json",
