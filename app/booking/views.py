@@ -9,6 +9,9 @@ from rest_framework import status, viewsets
 from users.models import User
 from users.serializers import GetUserSerializer
 import requests
+import random
+from random import randint
+
 import pusher
 from decouple import config
 class BookingView(viewsets.ModelViewSet):
@@ -57,7 +60,7 @@ class BuyPaymaya(generics.GenericAPIView):
                     "description": "dse"
                 }
             ],
-            "requestReferenceNumber": "1231412342312"
+            "requestReferenceNumber": f"{random_with_N_digits(5)}"
         }
         headers = {
             "Accept": "application/json",
@@ -68,3 +71,8 @@ class BuyPaymaya(generics.GenericAPIView):
         response = requests.post(url, json=payload, headers=headers)
         print(response.text)
         return Response(data=response.text)
+
+def random_with_N_digits(n):
+    range_start = 10**(n-1)
+    range_end = (10**n)-1
+    return randint(range_start, range_end)
